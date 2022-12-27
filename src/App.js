@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import About from './Components/About';
 import Home from './Components/Home';
-import NoteState from './Components/Context/notes/NoteState';
+import NoteState from './Context/notes/NoteState';
 
 function App() {
 	return (
@@ -11,14 +11,16 @@ function App() {
 			<NoteState>
 				<Router>
 					<Navbar />
-					<Switch>
-						<Route exact path="/">
-							<Home />
-						</Route>
-						<Route exact path="/about">
-							<About />
-						</Route>
-					</Switch>
+					<div className="container">
+						<Switch>
+							<Route exact path="/">
+								<Home />
+							</Route>
+							<Route exact path="/about">
+								<About />
+							</Route>
+						</Switch>
+					</div>
 				</Router>
 			</NoteState>
 		</>
