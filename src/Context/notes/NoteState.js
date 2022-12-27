@@ -91,17 +91,7 @@ const NoteState = (props) => {
 			},
 			body: JSON.stringify({ title, description, tag }),
 		});
-
-		console.log('Addding a new note');
-		const note = {
-			_id: '63a86be8df3475f234495d7aabc29ef2',
-			user: '63a7480c9a5374efc571cc19',
-			title: title,
-			description: description,
-			tag: tag,
-			date: '2022-12-25T15:27:36.136Z',
-			__v: 0,
-		};
+		const note = await response.json();
 		setNotes(notes.concat(note));
 	};
 	// Delete a Note
@@ -130,7 +120,7 @@ const NoteState = (props) => {
 	const editNote = async (id, title, description, tag) => {
 		// API call
 		const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
-			method: 'POST',
+			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
 				'auth-token':
@@ -138,17 +128,21 @@ const NoteState = (props) => {
 			},
 			body: JSON.stringify({ title, description, tag }),
 		});
-		const json = response.json();
+		const json = await response.json();
 
-		// Logic to edit in client side
-		for (let index = 0; index < notes.length; index++) {
-			const element = notes[index];
+		// Logic to edit in client/server side
+		let newNotes = JSON.parse(JSON.stringify(notes)); // TI will make A deep copy
+
+		for (let index = 0; index < newNotes.length; index++) {
+			const element = newNotes[index];
 			if (element._id === id) {
-				element.title = title;
-				element.description = description;
-				element.tag = tag;
+				newNotes[index].title = title;
+				newNotes[index].description = description;
+				newNotes[index].tag = tag;
+				break;
 			}
 		}
+		setNotes(newNotes);
 	};
 
 	return (
