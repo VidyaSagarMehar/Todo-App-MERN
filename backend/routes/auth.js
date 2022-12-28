@@ -20,18 +20,19 @@ router.post(
 		}),
 	],
 	async (req, res) => {
+		let success = false;
 		// If there are errors, return bad request anf the errors
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
-			return res.status(400).json({ errors: errors.array() });
+			return res.status(400).json({ success, errors: errors.array() });
 		}
 		// check wheather the email already exists
 		try {
 			let user = await User.findOne({ email: req.body.email });
 			if (user) {
-				return res.status(400).json({
-					error: 'sorry email already exists',
-				});
+				return res
+					.status(400)
+					.json({ success, error: 'sorry email already exists' });
 			}
 			// Password encryption
 			const salt = await bcrypt.genSalt(10);
@@ -51,8 +52,8 @@ router.post(
 
 			const authToken = jwt.sign(data, JWT_SECRET);
 			// console.log(jwtData);
-			// const success = true;
-			res.json({ authToken });
+			const success = true;
+			res.json({ success, authToken });
 
 			// res.json({
 			// 	user,
