@@ -1,13 +1,19 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import noteContext from '../Context/notes/NoteContext';
 import AddNote from './AddNote';
 import NoteItem from './NoteItem';
 
 function Notes(props) {
 	const context = useContext(noteContext);
+	let history = useHistory();
 	const { notes, getNotes, editNote } = context;
 	useEffect(() => {
-		getNotes();
+		if (localStorage.getItem('token')) {
+			getNotes();
+		} else {
+			history.push('login');
+		}
 	}, []);
 
 	const ref = useRef(null);
