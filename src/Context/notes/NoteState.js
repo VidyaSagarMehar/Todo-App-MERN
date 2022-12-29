@@ -4,62 +4,7 @@ import { useState } from 'react';
 const NoteState = (props) => {
 	const host = 'http://localhost:5000';
 
-	const notesInitial = [
-		{
-			_id: '63a86be775fdtagjh495d7abac29ef0',
-			user: '63a7480c9a5374efc571cc19',
-			title: 'First title',
-			description: 'First description',
-			tag: 'personal',
-			date: '2022-12-25T15:27:35.970Z',
-			__v: 0,
-		},
-		{
-			_id: '63a86be875f49,khgj5ad7abc29ef2',
-			user: '63a7480c9a5374efc571cc19',
-			title: 'second title',
-			description: 'First description',
-			tag: 'personal',
-			date: '2022-12-25T15:27:36.136Z',
-			__v: 0,
-		},
-		{
-			_id: '63a86be875f4a9534yhhdd7abc29ef2',
-			user: '63a7480c9a5374efc571cc19',
-			title: 'second title',
-			description: 'First description',
-			tag: 'personal',
-			date: '2022-12-25T15:27:36.136Z',
-			__v: 0,
-		},
-		{
-			_id: '63a86be875sjhgf495da7abc29ef2',
-			user: '63a7480c9a5374efc571cc19',
-			title: 'second title',
-			description: 'First description',
-			tag: 'personal',
-			date: '2022-12-25T15:27:36.136Z',
-			__v: 0,
-		},
-		{
-			_id: '63a86be875f445g9a5d7abc29ecf2',
-			user: '63a7480c9a5374efc571cc19',
-			title: 'second title',
-			description: 'First description',
-			tag: 'personal',
-			date: '2022-12-25T15:27:36.136Z',
-			__v: 0,
-		},
-		{
-			_id: '63a86be875f4yrt95d7aabc29ef2',
-			user: '63a7480c9a5374efc571cc19',
-			title: 'second title',
-			description: 'First description',
-			tag: 'personal',
-			date: '2022-12-25T15:27:36.136Z',
-			__v: 0,
-		},
-	];
+	const notesInitial = [];
 
 	const [notes, setNotes] = useState(notesInitial);
 
@@ -71,7 +16,7 @@ const NoteState = (props) => {
 			headers: {
 				'Content-Type': 'application/json',
 				'auth-token':
-					'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNhNzQ4MGM5YTUzNzRlZmM1NzFjYzE5In0sImlhdCI6MTY3MjI1NTA0Mn0.Bl0RswbJko7sN-u1-Wxc0cUQ3lEKSJMtp0PXZnQbu4k',
+					'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNhZDgwYjU0MmQ2NzY4YTk2N2ZkNjY5In0sImlhdCI6MTY3MjMxNTQ4OX0.g1IZkED6YaTk6CssHTJ9ST-dZfDZ11yQ58M0leUct20',
 			},
 		});
 		const json = await response.json();
@@ -87,7 +32,7 @@ const NoteState = (props) => {
 			headers: {
 				'Content-Type': 'application/json',
 				'auth-token':
-					'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNhNzQ4MGM5YTUzNzRlZmM1NzFjYzE5In0sImlhdCI6MTY3MjI1NTA0Mn0.Bl0RswbJko7sN-u1-Wxc0cUQ3lEKSJMtp0PXZnQbu4k',
+					'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNhZDgwYjU0MmQ2NzY4YTk2N2ZkNjY5In0sImlhdCI6MTY3MjMxNTQ4OX0.g1IZkED6YaTk6CssHTJ9ST-dZfDZ11yQ58M0leUct20',
 			},
 			body: JSON.stringify({ title, description, tag }),
 		});
@@ -102,7 +47,7 @@ const NoteState = (props) => {
 			headers: {
 				'Content-Type': 'application/json',
 				'auth-token':
-					'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNhNzQ4MGM5YTUzNzRlZmM1NzFjYzE5In0sImlhdCI6MTY3MjI1NTA0Mn0.Bl0RswbJko7sN-u1-Wxc0cUQ3lEKSJMtp0PXZnQbu4k',
+					'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNhZDgwYjU0MmQ2NzY4YTk2N2ZkNjY5In0sImlhdCI6MTY3MjMxNTQ4OX0.g1IZkED6YaTk6CssHTJ9ST-dZfDZ11yQ58M0leUct20',
 			},
 		});
 		const json = response.json();
@@ -124,7 +69,7 @@ const NoteState = (props) => {
 			headers: {
 				'Content-Type': 'application/json',
 				'auth-token':
-					'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNhNzQ4MGM5YTUzNzRlZmM1NzFjYzE5In0sImlhdCI6MTY3MjI1NTA0Mn0.Bl0RswbJko7sN-u1-Wxc0cUQ3lEKSJMtp0PXZnQbu4k',
+					'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNhZDgwYjU0MmQ2NzY4YTk2N2ZkNjY5In0sImlhdCI6MTY3MjMxNTQ4OX0.g1IZkED6YaTk6CssHTJ9ST-dZfDZ11yQ58M0leUct20',
 			},
 			body: JSON.stringify({ title, description, tag }),
 		});
