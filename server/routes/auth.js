@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
@@ -6,8 +7,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 // middleware
 const fetchuser = require('../middleware/fetchuser');
-
-const JWT_SECRET = 'thisis@secret';
 
 //Route 1-  Create a User using: POST "/api/auth/createuser". No login required
 router.post(
@@ -50,7 +49,7 @@ router.post(
 				},
 			};
 
-			const authToken = jwt.sign(data, JWT_SECRET);
+			const authToken = jwt.sign(data, process.env.JWT_SECRET);
 			// console.log(jwtData);
 			const success = true;
 			res.json({ success, authToken });
@@ -111,7 +110,7 @@ router.post(
 				},
 			};
 
-			const authToken = jwt.sign(data, JWT_SECRET);
+			const authToken = jwt.sign(data, process.env.JWT_SECRET);
 			success = true;
 			res.json({ success, authToken });
 		} catch (error) {
