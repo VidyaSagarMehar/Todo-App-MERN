@@ -1,7 +1,7 @@
 {
-	"name": "inotebook",
+	"name": "todo",
 	"version": "1.0.0",
-	"description": "iNotebook - your notes in cloud",
+	"description": "todo - your todos in cloud",
 	"main": "index.js",
 	"scripts": {
 		"start": "nodemon index.js",

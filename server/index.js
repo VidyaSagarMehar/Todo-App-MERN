@@ -13,10 +13,8 @@ app.use(cors());
 
 // Available Routes
 app.use('/api/auth', require('./routes/auth'));
-app.use('/api/notes', require('./routes/notes'));
+app.use('/api/todos', require('./routes/todos'));
 
 app.listen(port, () => {
-	console.log(
-		`iNotebook backend app listening on port http://localhost:${port}`,
-	);
+	console.log(`Todo app backend listening on port http://localhost:${port}`);
 });

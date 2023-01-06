@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const NotesSchema = new Schema({
+const TodosSchema = new Schema({
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'user',
@@ -21,8 +21,8 @@ const NotesSchema = new Schema({
 	},
 	date: {
 		type: Date,
-		default: Date.now, // we don't have to call Date.now() like this here, coz it will run when it s required
+		default: Date.now,
 	},
 });
 
-module.exports = mongoose.model('notes', NotesSchema);
+module.exports = mongoose.model('todos', TodosSchema);

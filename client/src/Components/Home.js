@@ -1,10 +1,10 @@
-import Notes from './Notes';
+import Todos from './Todos';
 
 function Home(props) {
 	const { showAlert } = props;
 	return (
 		<div>
-			<Notes showAlert={showAlert} />
+			<Todos showAlert={showAlert} />
 		</div>
 	);
 }

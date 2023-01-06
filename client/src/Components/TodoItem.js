@@ -1,36 +1,36 @@
 import React, { useContext } from 'react';
-import noteContext from '../Context/notes/NoteContext';
+import todoContext from '../Context/todos/TodoContext';
 
-function NoteItem(props) {
-	const context = useContext(noteContext);
-	const { deleteNote } = context;
+function TodoItem(props) {
+	const context = useContext(todoContext);
+	const { deleteTodo } = context;
 
-	const { note, updateNote } = props;
+	const { todo, updateTodo } = props;
 	return (
 		<div className="col-md-3 my-1">
 			<div className="card">
 				<div className="card-body">
 					<div className="d-flex inlinealign-items-center">
-						<h5 className="card-title">{note.title}</h5>{' '}
+						<h5 className="card-title">{todo.title}</h5>{' '}
 						<i
 							className="fa-solid fa-trash mx-2"
 							onClick={() => {
-								deleteNote(note._id);
+								deleteTodo(todo._id);
 								props.showAlert('Deleted successfully', 'success');
 							}}
 						></i>
 						<i
 							className="fa-solid fa-pen mx-2"
 							onClick={() => {
-								updateNote(note);
+								updateTodo(todo);
 							}}
 						></i>
 					</div>
-					<p className="card-text">{note.description}</p>
+					<p className="card-text">{todo.description}</p>
 				</div>
 			</div>
 		</div>
 	);
 }
 
-export default NoteItem;
+export default TodoItem;

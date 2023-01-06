@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import noteContext from '../Context/notes/NoteContext';
-import AddNote from './AddNote';
-import NoteItem from './NoteItem';
+import todoContext from '../Context/todos/TodoContext';
+import AddTodo from './AddTodo';
+import TodoItem from './TodoItem';
 
-function Notes(props) {
-	const context = useContext(noteContext);
+function Todos(props) {
+	const context = useContext(todoContext);
 	let history = useHistory();
-	const { notes, getNotes, editNote } = context;
+	const { todos, getTodos, editTodo } = context;
 	useEffect(() => {
 		if (localStorage.getItem('token')) {
-			getNotes();
+			getTodos();
 		} else {
 			history.push('login');
 		}
@@ -18,35 +18,35 @@ function Notes(props) {
 
 	const ref = useRef(null);
 	const refClose = useRef(null);
-	const [note, setNote] = useState({
+	const [todo, setTodo] = useState({
 		id: '',
 		etitle: '',
 		edescription: '',
 		etag: '',
 	});
 
-	const updateNote = (currentNote) => {
+	const updateTodo = (currentTodo) => {
 		ref.current.click();
-		setNote({
-			id: currentNote._id,
-			etitle: currentNote.title,
-			edescription: currentNote.description,
-			etag: currentNote.tag,
+		setTodo({
+			id: currentTodo._id,
+			etitle: currentTodo.title,
+			edescription: currentTodo.description,
+			etag: currentTodo.tag,
 		});
 	};
 
 	const handleClick = (e) => {
-		editNote(note.id, note.etitle, note.edescription, note.etag);
+		editTodo(todo.id, todo.etitle, todo.edescription, todo.etag);
 		refClose.current.click();
 		props.showAlert('Updated sucessfully', 'success');
 	};
 	const onChange = (e) => {
-		setNote({ ...note, [e.target.name]: e.target.value });
+		setTodo({ ...todo, [e.target.name]: e.target.value });
 	};
 
 	return (
 		<>
-			<AddNote showAlert={props.showAlert} />
+			<AddTodo showAlert={props.showAlert} />
 
 			{/* Modal starts here */}
 			<button
@@ -70,7 +70,7 @@ function Notes(props) {
 					<div className="modal-content">
 						<div className="modal-header">
 							<h1 className="modal-title fs-5" id="exampleModalLabel">
-								Edit Note
+								Edit Todo
 							</h1>
 							<button
 								type="button"
@@ -88,7 +88,7 @@ function Notes(props) {
 									<input
 										minLength={5}
 										required
-										value={note.etitle}
+										value={todo.etitle}
 										type="text"
 										className="form-control"
 										id="etitle"
@@ -104,7 +104,7 @@ function Notes(props) {
 									<input
 										minLength={5}
 										required
-										value={note.edescription}
+										value={todo.edescription}
 										type="text"
 										className="form-control"
 										id="edescription"
@@ -119,7 +119,7 @@ function Notes(props) {
 									<input
 										minLength={5}
 										required
-										value={note.etag}
+										value={todo.etag}
 										type="text"
 										className="form-control"
 										id="etag"
@@ -139,12 +139,12 @@ function Notes(props) {
 								Close
 							</button>
 							<button
-								disabled={note.etitle.length < 5 || note.edescription < 5}
+								disabled={todo.etitle.length < 5 || todo.edescription < 5}
 								type="button"
 								className="btn btn-primary"
 								onClick={handleClick}
 							>
-								Update Note
+								Update Todo
 							</button>
 						</div>
 					</div>
@@ -153,16 +153,16 @@ function Notes(props) {
 			{/* End of modals */}
 
 			<div className="row my-3">
-				<h3>Your notes</h3>
+				<h3>Your todos</h3>
 				<div className="container">
-					{notes.length === 0 && 'No Notes to display'}
+					{todos.length === 0 && 'No Todos to display'}
 				</div>
-				{notes.map((note) => {
+				{todos.map((todo) => {
 					return (
-						<NoteItem
-							key={note._id}
-							updateNote={updateNote}
-							note={note}
+						<TodoItem
+							key={todo._id}
+							updateTodo={updateTodo}
+							todo={todo}
 							showAlert={props.showAlert}
 						/>
 					);
@@ -172,4 +172,4 @@ function Notes(props) {
 	);
 }
 
-export default Notes;
+export default Todos;

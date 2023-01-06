@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
-import noteContext from '../Context/notes/NoteContext';
+import todoContext from '../Context/todos/TodoContext';
 
-function AddNote(props) {
-	const context = useContext(noteContext);
-	const { addNote } = context;
+function AddTodo(props) {
+	const context = useContext(todoContext);
+	const { addTodo } = context;
 
-	const [note, setNote] = useState({
+	const [todo, setTodo] = useState({
 		title: '',
 		description: '',
 		tag: '',
@@ -13,8 +13,8 @@ function AddNote(props) {
 
 	const handleClick = (e) => {
 		e.preventDefault();
-		addNote(note.title, note.description, note.tag);
-		setNote({
+		addTodo(todo.title, todo.description, todo.tag);
+		setTodo({
 			title: '',
 			description: '',
 			tag: '',
@@ -23,18 +23,18 @@ function AddNote(props) {
 	};
 
 	const onChange = (e) => {
-		setNote({ ...note, [e.target.name]: e.target.value });
+		setTodo({ ...todo, [e.target.name]: e.target.value });
 	};
 	return (
 		<div className="container">
-			<h2>Add a note</h2>
+			<h2>Add a todo</h2>
 			<form>
 				<div className="mb-3">
 					<label htmlFor="title" className="form-label">
 						Title
 					</label>
 					<input
-						value={note.title}
+						value={todo.title}
 						minLength={5}
 						required
 						type="text"
@@ -50,7 +50,7 @@ function AddNote(props) {
 						Descripion
 					</label>
 					<input
-						value={note.description}
+						value={todo.description}
 						minLength={5}
 						required
 						type="text"
@@ -65,7 +65,7 @@ function AddNote(props) {
 						Tag
 					</label>
 					<input
-						value={note.tag}
+						value={todo.tag}
 						minLength={5}
 						required
 						type="text"
@@ -77,16 +77,16 @@ function AddNote(props) {
 				</div>
 
 				<button
-					disabled={note.title.length < 5 || note.description < 5}
+					disabled={todo.title.length < 5 || todo.description < 5}
 					type="submit"
 					className="btn btn-primary"
 					onClick={handleClick}
 				>
-					Add Note
+					Add Todo
 				</button>
 			</form>
 		</div>
 	);
 }
 
-export default AddNote;
+export default AddTodo;

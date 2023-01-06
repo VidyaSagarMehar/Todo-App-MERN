@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const fetchuser = require('../middleware/fetchuser');
-const Note = require('../models/Note');
+const Todo = require('../models/Todo');
 const { body, validationResult } = require('express-validator');
 
-// Routes 1 - Get all the notes usnig : GET "/api/notes/getuser" .Login required
-router.get('/fetchallnotes', fetchuser, async (req, res) => {
+// Routes 1 - Get all the todos usnig : GET "/api/todos/getuser" .Login required
+router.get('/fetchalltodos', fetchuser, async (req, res) => {
 	try {
-		const notes = await Note.find({ user: req.user.id });
-		res.json(notes);
+		const todos = await Todo.find({ user: req.user.id });
+		res.json(todos);
 	} catch (error) {
 		// Handle Errors
 		console.error(error.message);
@@ -16,9 +16,9 @@ router.get('/fetchallnotes', fetchuser, async (req, res) => {
 	}
 });
 
-// Routes 2 - Add a note usnig : POST "/api/notes/addnote" .Login required
+// Routes 2 - Add a todo usnig : POST "/api/todos/addtodo" .Login required
 router.post(
-	'/addnote',
+	'/addtodo',
 	fetchuser,
 	[
 		body('title', 'Enter a valid title').isLength({ min: 3 }),
@@ -34,15 +34,15 @@ router.post(
 			if (!errors.isEmpty()) {
 				return res.status(400).json({ errors: errors.array() });
 			}
-			const note = new Note({
+			const todo = new Todo({
 				title,
 				description,
 				tag,
 				user: req.user.id,
 			});
-			const saveNote = await note.save();
+			const saveTodo = await todo.save();
 
-			res.json(saveNote);
+			res.json(saveTodo);
 		} catch (error) {
 			// Handle Errors
 			console.error(error.message);
@@ -51,38 +51,38 @@ router.post(
 	},
 );
 
-// Routes 3 - Update an existing Note usnig : PUT "/api/notes/updatenote" .Login required
-router.put('/updatenote/:id', fetchuser, async (req, res) => {
+// Routes 3 - Update an existing Todo usnig : PUT "/api/todos/updatetodo" .Login required
+router.put('/updatetodo/:id', fetchuser, async (req, res) => {
 	const { title, description, tag } = req.body;
 
 	try {
-		//Create a newNote object
-		const newNote = {};
+		//Create a newTodo object
+		const newTodo = {};
 		if (title) {
-			newNote.title = title;
+			newTodo.title = title;
 		}
 		if (description) {
-			newNote.description = description;
+			newTodo.description = description;
 		}
 		if (tag) {
-			newNote.tag = tag;
+			newTodo.tag = tag;
 		}
 
-		// Find the note to be updated and update it
-		let note = await Note.findById(req.params.id);
-		if (!note) {
+		// Find the todo to be updated and update it
+		let todo = await Todo.findById(req.params.id);
+		if (!todo) {
 			return res.status(404).send('Not found');
 		}
-		if (note.user.toString() !== req.user.id) {
+		if (todo.user.toString() !== req.user.id) {
 			return res.status(401).send('Not allowed');
 		}
 
-		note = await Note.findByIdAndUpdate(
+		todo = await Todo.findByIdAndUpdate(
 			req.params.id,
-			{ $set: newNote },
+			{ $set: newTodo },
 			{ new: true },
 		);
-		res.json({ note });
+		res.json({ todo });
 	} catch (error) {
 		// Handle Errors
 		console.error(error.message);
@@ -90,21 +90,21 @@ router.put('/updatenote/:id', fetchuser, async (req, res) => {
 	}
 });
 
-// Routes 4 - Delete an existing Note usnig : DELETE "/api/notes/deletenote" .Login required
-router.delete('/deletenote/:id', fetchuser, async (req, res) => {
+// Routes 4 - Delete an existing Todo usnig : DELETE "/api/todos/deletetodo" .Login required
+router.delete('/deletetodo/:id', fetchuser, async (req, res) => {
 	try {
-		// Find the note to be deleted and delete it
-		let note = await Note.findById(req.params.id);
-		if (!note) {
+		// Find the todo to be deleted and delete it
+		let todo = await Todo.findById(req.params.id);
+		if (!todo) {
 			return res.status(404).send('Not found');
 		}
 		// Allow deletio if the user owns it
-		if (note.user.toString() !== req.user.id) {
+		if (todo.user.toString() !== req.user.id) {
 			return res.status(401).send('Not allowed');
 		}
 
-		note = await Note.findByIdAndDelete(req.params.id);
-		res.json({ Success: true, note: note });
+		todo = await Todo.findByIdAndDelete(req.params.id);
+		res.json({ Success: true, todo: todo });
 	} catch (error) {
 		// Handle Errors
 		console.error(error.message);
