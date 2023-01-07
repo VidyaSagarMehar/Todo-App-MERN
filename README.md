@@ -52,9 +52,9 @@ https://todo-app-mern-eight.vercel.app/login
 
 ## Screenshots
 
-![](./client/src/Screenshot%201.png)
-![](./client/src/Screenshot%202.png)
-![](./client/src/Screenshot%203.png)
+![Screenshot 1](https://user-images.githubusercontent.com/92782806/211165891-bba03b0f-cc65-4a17-9a3f-14fbc323889d.png)
+![Screenshot 2](https://user-images.githubusercontent.com/92782806/211165899-5ebcf832-749d-4836-bd7d-a2b9fa5655d7.png)
+![Screenshot 3](https://user-images.githubusercontent.com/92782806/211165918-d804e63c-2141-4a5f-bbf2-4c964832b28f.png)
 
 
 ## Feedback
