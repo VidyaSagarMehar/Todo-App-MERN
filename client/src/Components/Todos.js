@@ -112,7 +112,7 @@ function Todos(props) {
 										onChange={onChange}
 									/>
 								</div>
-								<div className="mb-3">
+								{/* <div className="mb-3">
 									<label htmlFor="etag" className="form-label">
 										Tag
 									</label>
@@ -126,7 +126,7 @@ function Todos(props) {
 										name="etag"
 										onChange={onChange}
 									/>
-								</div>
+								</div> */}
 							</form>
 						</div>
 						<div className="modal-footer">
