@@ -4,6 +4,10 @@ const fetchuser = require('../middleware/fetchuser');
 const Todo = require('../models/Todo');
 const { body, validationResult } = require('express-validator');
 
+// Routes  - Home
+router.get('/', async (req, res) => {
+	res.status(200).send('Hello from home route');
+});
 // Routes 1 - Get all the todos usnig : GET "/api/todos/getuser" .Login required
 router.get('/fetchalltodos', fetchuser, async (req, res) => {
 	try {
