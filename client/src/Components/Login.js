@@ -37,9 +37,9 @@ function Login(props) {
 	};
 
 	return (
-		<div className="container">
-			<form onSubmit={handleSubmit}>
-				<div className="mb-3">
+		<div className="container text-light">
+			<form onSubmit={handleSubmit} className="col">
+				<div className="mb-3 col-md-6">
 					<label htmlFor="email" className="form-label">
 						Email
 					</label>
@@ -53,7 +53,7 @@ function Login(props) {
 						aria-describedby="emailHelp"
 					/>
 				</div>
-				<div className="mb-3">
+				<div className="mb-3 col-md-6">
 					<label htmlFor="password1" className="form-label">
 						Password
 					</label>

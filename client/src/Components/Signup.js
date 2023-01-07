@@ -44,9 +44,9 @@ function Signup(props) {
 		setCredentials({ ...credentials, [e.target.name]: e.target.value });
 	};
 	return (
-		<div className="container">
-			<form onSubmit={handleSubmit}>
-				<div className="mb-3">
+		<div className="container text-light">
+			<form onSubmit={handleSubmit} className="col">
+				<div className="mb-3 col-md-6">
 					<label htmlFor="name" className="form-label">
 						Name
 					</label>
@@ -59,7 +59,7 @@ function Signup(props) {
 						onChange={onChange}
 					/>
 				</div>
-				<div className="mb-3">
+				<div className="mb-3 col-md-6">
 					<label htmlFor="email" className="form-label">
 						Email address
 					</label>
@@ -72,7 +72,7 @@ function Signup(props) {
 						onChange={onChange}
 					/>
 				</div>
-				<div className="mb-3">
+				<div className="mb-3 col-md-6">
 					<label htmlFor="password" className="form-label">
 						Password
 					</label>
@@ -86,7 +86,7 @@ function Signup(props) {
 						required
 					/>
 				</div>
-				<div className="mb-3">
+				<div className="mb-3 col-md-6">
 					<label htmlFor="cpassword" className="form-label">
 						Confirm Password
 					</label>

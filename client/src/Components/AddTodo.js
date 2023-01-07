@@ -26,10 +26,10 @@ function AddTodo(props) {
 		setTodo({ ...todo, [e.target.name]: e.target.value });
 	};
 	return (
-		<div className="container">
+		<div className="container text-light">
 			<h2>Add a todo</h2>
-			<form>
-				<div className="mb-3">
+			<form className="col">
+				<div className="mb-3 sm-5 col-md-6">
 					<label htmlFor="title" className="form-label">
 						Title
 					</label>
@@ -45,7 +45,7 @@ function AddTodo(props) {
 						onChange={onChange}
 					/>
 				</div>
-				<div className="mb-3">
+				<div className="mb-3 col-md-6">
 					<label htmlFor="description" className="form-label">
 						Descripion
 					</label>
@@ -60,7 +60,7 @@ function AddTodo(props) {
 						onChange={onChange}
 					/>
 				</div>
-				<div className="mb-3">
+				{/* <div className="mb-3 col-sm">
 					<label htmlFor="tag" className="form-label">
 						Tag
 					</label>
@@ -74,7 +74,7 @@ function AddTodo(props) {
 						name="tag"
 						onChange={onChange}
 					/>
-				</div>
+				</div> */}
 
 				<button
 					disabled={todo.title.length < 5 || todo.description < 5}

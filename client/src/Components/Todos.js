@@ -153,8 +153,8 @@ function Todos(props) {
 			{/* End of modals */}
 
 			<div className="row my-3">
-				<h3>Your todos</h3>
-				<div className="container">
+				<h3 className=" text-light">Your todos</h3>
+				<div className="container text-light">
 					{todos.length === 0 && 'No Todos to display'}
 				</div>
 				{todos.map((todo) => {
