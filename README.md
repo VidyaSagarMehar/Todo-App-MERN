@@ -12,7 +12,7 @@ Todo app is a full-stack application build using MERN, in this app you can add y
 ### 10 days
 
 ## Demo | Vercel
-https://todo-app-mern-eight.vercel.app/login
+todo-app-mern-85qkkf23l-vidyasagarmehar.vercel.app
 
 ## Technology Used
 ![MongoDB](https://img.shields.io/badge/mongodb-darkgreen?style=for-the-badge&logo=mongodb&logoColor=black)
