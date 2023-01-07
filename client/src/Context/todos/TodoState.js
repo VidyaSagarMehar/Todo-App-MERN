@@ -2,7 +2,7 @@ import TodoContext from './TodoContext';
 import { useState } from 'react';
 
 const TodoState = (props) => {
-	const host = 'http://localhost:5000';
+	const host = 'https://todo-app-mern-production-0118.up.railway.app';
 
 	const todosInitial = [];
 

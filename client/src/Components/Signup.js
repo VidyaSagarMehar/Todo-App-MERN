@@ -15,17 +15,20 @@ function Signup(props) {
 
 		const { name, email, password } = credentials;
 
-		const response = await fetch(`http://localhost:5000/api/auth/createuser`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
+		const response = await fetch(
+			`https://todo-app-mern-production-0118.up.railway.app/api/auth/createuser`,
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					name,
+					email,
+					password,
+				}),
 			},
-			body: JSON.stringify({
-				name,
-				email,
-				password,
-			}),
-		});
+		);
 		const json = await response.json();
 		console.log(json);
 		if (json.success) {
