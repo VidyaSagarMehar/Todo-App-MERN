@@ -28,21 +28,20 @@ function UserProfile() {
 	}, []);
 
 	return (
-		<div>
-			<div class="card h-100 bg-transparent border border-4 border-primary text-center text-light rounded">
+		<>
+			<div className="card h-100 bg-transparent border border-4 border-primary text-center text-light rounded mt-2">
 				<img
 					src="https://cdn-icons-png.flaticon.com/128/3237/3237472.png"
-					class="card-img-top"
+					className="card-img-top mx-auto my-2"
 					alt="..."
-					className="mx-auto my-2"
 					width="70px"
 				/>
-				<div class="card-body">
-					<h5 class="card-title">{userName}</h5>
-					<p class="card-text">{userEmail}</p>
+				<div className="card-body">
+					<h5 className="card-title">{userName}</h5>
+					<p className="card-text fs-6 fw-lighter">{userEmail}</p>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }
 

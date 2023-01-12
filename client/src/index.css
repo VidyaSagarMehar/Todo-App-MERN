@@ -22,3 +22,7 @@ i {
 	padding: 5px;
 	cursor: pointer;
 }
+
+.card-img-top {
+	width: 70px;
+}
