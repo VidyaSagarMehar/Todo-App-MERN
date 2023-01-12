@@ -29,7 +29,7 @@ function UserProfile() {
 
 	return (
 		<>
-			<div className="card h-100 bg-transparent border border-4 border-primary text-center text-light rounded mt-2">
+			<div className="card bg-primary text-center rounded mt-2">
 				<img
 					src="https://cdn-icons-png.flaticon.com/128/3237/3237472.png"
 					className="card-img-top mx-auto my-2"
@@ -37,8 +37,8 @@ function UserProfile() {
 					width="70px"
 				/>
 				<div className="card-body">
-					<h5 className="card-title">{userName}</h5>
-					<p className="card-text fs-6 fw-lighter">{userEmail}</p>
+					<h5 className="card-title text-dark">{userName}</h5>
+					<p className="card-text fs-6 fw-lighter text-dark">{userEmail}</p>
 				</div>
 			</div>
 		</>
