@@ -6,6 +6,15 @@ function TodoItem(props) {
 	const { deleteTodo } = context;
 
 	const { todo, updateTodo } = props;
+	const date = new Date(todo.date);
+	const formattedDate = date.toLocaleDateString('en-GB', {
+		day: 'numeric',
+		month: 'long',
+		year: 'numeric',
+	});
+	const formattedTime =
+		date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+
 	return (
 		<div className="col-md-3 my-1">
 			<div className="card">
@@ -27,6 +36,10 @@ function TodoItem(props) {
 						></i>
 					</div>
 					<p className="card-text">{todo.description}</p>
+					<span className="fs-6 fw-lighter d-flex justify-content-between">
+						<p>{formattedTime}</p>
+						<p>{formattedDate}</p>
+					</span>
 				</div>
 			</div>
 		</div>

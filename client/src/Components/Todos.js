@@ -22,7 +22,6 @@ function Todos(props) {
 		id: '',
 		etitle: '',
 		edescription: '',
-		etag: '',
 	});
 
 	const updateTodo = (currentTodo) => {
@@ -31,7 +30,6 @@ function Todos(props) {
 			id: currentTodo._id,
 			etitle: currentTodo.title,
 			edescription: currentTodo.description,
-			etag: currentTodo.tag,
 		});
 	};
 
@@ -112,21 +110,6 @@ function Todos(props) {
 										onChange={onChange}
 									/>
 								</div>
-								{/* <div className="mb-3">
-									<label htmlFor="etag" className="form-label">
-										Tag
-									</label>
-									<input
-										minLength={5}
-										required
-										value={todo.etag}
-										type="text"
-										className="form-control"
-										id="etag"
-										name="etag"
-										onChange={onChange}
-									/>
-								</div> */}
 							</form>
 						</div>
 						<div className="modal-footer">
