@@ -79,7 +79,7 @@ function AddTodo(props) {
 				</div> */}
 
 					<button
-						disabled={todo.title.length < 5 || todo.description < 5}
+						disabled={todo.title.length < 5 || todo.description.length < 5}
 						type="submit"
 						className="btn btn-primary"
 						onClick={handleClick}
