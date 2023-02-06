@@ -19,7 +19,7 @@ const TodoState = (props) => {
 			},
 		});
 		const json = await response.json();
-		console.log(json);
+		// console.log(json);
 		setTodos(json);
 	};
 
@@ -47,11 +47,11 @@ const TodoState = (props) => {
 				'auth-token': localStorage.getItem('token'),
 			},
 		});
-		const json = response.json();
-		console.log(json);
+		// const json = response.json();
+		// console.log(json);
 
 		// Delete from client side
-		console.log('Deleting the todo with id' + id);
+		// console.log('Deleting the todo with id' + id);
 		const newTodos = todos.filter((todo) => {
 			return todo._id !== id;
 		});
@@ -69,7 +69,7 @@ const TodoState = (props) => {
 			},
 			body: JSON.stringify({ title, description, tag }),
 		});
-		const json = await response.json();
+		// const json = await response.json();
 
 		// Logic to edit in client/server side
 		let newTodos = JSON.parse(JSON.stringify(todos)); // TI will make A deep copy
